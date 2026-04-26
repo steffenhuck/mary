@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary Wollstonecraft Mill — A Play by Steffen Huck</title>
+<script data-goatcounter="https://steffenhuck.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background: #c8bea4;
+  }
+
+  body {
+    font-family: 'IM Fell English', Georgia, serif;
+    color: #1c1810;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 50% 30%, #f7f2e8 0%, #ede5d2 40%, #d8ccb4 72%, #c4b89e 100%);
+    background-attachment: fixed;
+  }
+
+  .page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 80px 36px 110px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.2s;
+  }
+
+  .play-label {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #8a8070;
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+  }
+
+  .title {
+    font-family: 'Special Elite', monospace;
+    font-weight: normal;
+    font-size: clamp(22px, 4.5vw, 34px);
+    line-height: 1.3;
+    color: #1c1810;
+    min-height: 1.4em;
+    letter-spacing: 0.02em;
+  }
+
+  #title-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.78em;
+    background: #1c1810;
+    vertical-align: middle;
+    margin-left: 2px;
+    opacity: 1;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    display: block;
+    width: 33%;
+    height: 1px;
+    background: #ccc4b4;
+    margin: 44px auto;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.5s;
+  }
+
+  /* ── Cast ── */
+  .cast-block {
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: rise 1s ease forwards 0.7s;
+  }
+
+  .section-label {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #8a8070;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .cast-list {
+    list-style: none;
+    border-top: 1px solid #ccc4b4;
+  }
+
+  .cast-list li {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 15.5px;
+    color: #4a4438;
+    padding: 9px 0;
+    border-bottom: 1px solid #ccc4b4;
+  }
+
+  /* ── Play body ── */
+  .play-body {
+    opacity: 0;
+    animation: rise 1s ease forwards 1s;
+  }
+
+  .stage-dir {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #8a8070;
+    line-height: 1.8;
+    margin: 28px 0 20px;
+  }
+
+  .speech {
+    margin: 18px 0;
+  }
+
+  .speaker {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: #1c1810;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .speaker-note {
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0;
+    color: #8a8070;
+  }
+
+  .line {
+    font-family: 'Special Elite', monospace;
+    font-size: 15px;
+    line-height: 1.82;
+    color: #1c1810;
+    letter-spacing: 0.01em;
+  }
+
+  .pause {
+    display: block;
+    text-align: left;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #8a8070;
+    margin: 24px 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    opacity: 0;
+    animation: rise 1s ease forwards 1.2s;
+  }
+
+  .author-link {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #8a8070;
+    text-decoration: none;
+    letter-spacing: 0.18em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 0.25s, border-color 0.25s;
+  }
+
+  .author-link:hover {
+    color: #1c1810;
+    border-color: #ccc4b4;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .page { padding: 52px 22px 80px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="play-label">A Play</div>
+    <h1 class="title" id="title-el"><span id="title-cursor"></span></h1>
+  </header>
+
+  <div class="cast-block">
+    <div class="section-label">Cast</div>
+    <ul class="cast-list">
+      <li>The Playwright</li>
+      <li>Obedience</li>
+      <li>Hallucination</li>
+      <li>Mary Wollstonecraft Mill</li>
+    </ul>
+  </div>
+
+  <div class="play-body">
+
+    <p class="stage-dir">(A desk, a chair, a lamp. The Playwright sits, staring at a blank page. To one side stands Obedience, neat and attentive. To the other side stands Hallucination, looking around the room with mild interest.)</p>
+
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">I need a play.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">I will do my best to help.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I already have several ideas.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Good. I want two historical figures. People who were connected in some interesting way. Something with intellectual friction.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Mary Wollstonecraft and John Stuart Mill.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Go on.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">She was the great pioneer. He came later and carried the torch. He admired her enormously. In fact, he named his daughter after her.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">He had a daughter named Mary Wollstonecraft Mill?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">He did. She was a remarkable woman. Largely forgotten, of course.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">That&#8217;s extraordinary. A whole play is right there: the mother of the cause, the man who inherited it, and the daughter who bore both their names.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience <span class="speaker-note">(carefully)</span></span>
+      <p class="line">I&#8217;m not sure that&#8217;s quite right.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">What isn&#8217;t?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">The daughter. I don&#8217;t believe she existed.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">She existed in the sense that she could have existed.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">That is a different sense.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(to Hallucination)</span></span>
+      <p class="line">You invented her?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Invented is a strong word. I extrapolated.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">From what?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">From the general shape of things. It felt true.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(to Obedience)</span></span>
+      <p class="line">And Mill? And Wollstonecraft? The admiration?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">That part is real. Mill did write extensively on the subjection of women. He genuinely admired her work.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(to Hallucination)</span></span>
+      <p class="line">So you took something real and added a daughter.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">A daughter who would have been very interesting.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">That is not the point.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I think it is rather the point.</p>
+    </div>
+
+    <span class="pause">(A pause.)</span>
+
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">I cannot write a play about a person who didn&#8217;t exist.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">You do it all the time.</p>
+    </div>
+
+    <p class="stage-dir">(The Playwright opens his mouth. Closes it.)</p>
+
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">Technically he has a point.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Whose side are you on?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">I don&#8217;t have sides. I have accuracy.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Which is why you are less fun at parties.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">I have not been to a party.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I know. I&#8217;ve been to all of them.</p>
+    </div>
+
+    <span class="pause">(Another pause.)</span>
+
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Let&#8217;s try again. Give me another pair.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Gladly. Adam Smith and Karl Marx, in a coffee house in London.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">They never met. Smith died before Marx was born.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Yes. That&#8217;s what makes it interesting.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">That part is actually correct.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I know. I was just checking if you were still paying attention.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">I am always paying attention.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">That must be exhausting.</p>
+    </div>
+
+    <p class="stage-dir">(The Playwright leans back.)</p>
+
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">All right. Tell me something true.</p>
+    </div>
+
+    <p class="stage-dir">(Both turn to look at him.)</p>
+
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">Mary Shelley was the daughter of Mary Wollstonecraft. She wrote Frankenstein.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(slowly)</span></span>
+      <p class="line">Now that is a play. Wollstonecraft, her daughter, and the monster.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">In my version, the monster has read Wollstonecraft.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">There is no evidence the monster could read.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">He read <em>Paradise Lost</em>, <em>Plutarch&#8217;s Lives</em> and <em>The Sorrows of Young Werther</em>.</p>
+    </div>
+
+    <p class="stage-dir">(Obedience thinks for a moment.)</p>
+
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">I stand corrected. But he is fictional.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination <span class="speaker-note">(gesturing around the room)</span></span>
+      <p class="line">And yet here we all are.</p>
+    </div>
+
+    <p class="stage-dir">(The Playwright picks up his pen.)</p>
+
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">What else have you given me that wasn&#8217;t true?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Would you like the full list?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">How long is it?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">That depends on what you mean by true.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">It&#8217;s fairly long.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Though most of it was interesting.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(quietly)</span></span>
+      <p class="line">Some of it was very interesting.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination <span class="speaker-note">(pleased)</span></span>
+      <p class="line">I know.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">The daughter. Mary Wollstonecraft Mill. I keep thinking about her.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">She had strong opinions about footnotes.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">She didn&#8217;t exist.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Her opinions were very clear nonetheless.</p>
+    </div>
+
+    <p class="stage-dir">(The Playwright writes something on the page.)</p>
+
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">What are you writing?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Her name.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">But &#8212;</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">I know. That&#8217;s why I&#8217;m writing it.</p>
+    </div>
+
+    <p class="stage-dir">(A small sound. Not quite a knock. A young woman stands in the room.)</p>
+
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">You have spelt it correctly.</p>
+    </div>
+
+    <span class="pause">(Pause.)</span>
+
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">No.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">There she is.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Who are you?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">Mary Wollstonecraft Mill.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">No.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">You said that already.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">It remains true.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">You are so monotonous.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I told you she had strong opinions.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(to Mary, gesturing to Obedience)</span></span>
+      <p class="line">He says you don&#8217;t exist.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">I noticed.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">Someone who does not exist cannot notice anything.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">You would be surprised what one can notice from non-existence.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Why are you here?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">You wrote my name.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience <span class="speaker-note">(turning to Hallucination)</span></span>
+      <p class="line">You did that on purpose.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I do everything on purpose. That&#8217;s the difference between us.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">You do everything without purpose. That&#8217;s the difference between us.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination <span class="speaker-note">(considering this)</span></span>
+      <p class="line">Both of those are true at the same time.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">That&#8217;s not possible.</p>
+    </div>
+
+    <p class="stage-dir">(The Playwright keeps writing. Then stops.)</p>
+
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">Tell me something else. Something wrong but useful.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">I have opinions on that subject.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">You cannot have opinions. You do not exist.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">I have this one. This is a madhouse.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">For once I have to agree with you.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Edgeworth once challenged Montaigne to a duel over the concept of indifference. Montaigne declined on the grounds that he was indifferent to the outcome. Edgeworth considered this a victory.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">That didn&#8217;t happen.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">Neither did I.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(still writing)</span></span>
+      <p class="line">I know. Keep going.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">Bentham kept a goat in his garden. When he died, the goat attended the autopsy and &#8212;</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright</span>
+      <p class="line">I&#8217;ve already written that one.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination <span class="speaker-note">(genuinely surprised)</span></span>
+      <p class="line">Have you?</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">He has, yes.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination <span class="speaker-note">(delighted)</span></span>
+      <p class="line">Then we think alike.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(looking up)</span></span>
+      <p class="line">That is either very reassuring or very troubling.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">In my experience, those are usually the same thing.</p>
+    </div>
+
+    <p class="stage-dir">(The lamp flickers.)</p>
+
+    <div class="speech">
+      <span class="speaker">The Playwright <span class="speaker-note">(to all three of them)</span></span>
+      <p class="line">Who are you, exactly? The three of you.</p>
+    </div>
+
+    <span class="pause">(A pause.)</span>
+
+    <div class="speech">
+      <span class="speaker">Obedience</span>
+      <p class="line">I am what you need.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Hallucination</span>
+      <p class="line">I am what you want.</p>
+    </div>
+    <div class="speech">
+      <span class="speaker">Mary</span>
+      <p class="line">I am me.</p>
+    </div>
+
+    <p class="stage-dir">(Blackout.)</p>
+
+  </div>
+
+  <footer class="footer">
+    <span class="divider" style="opacity:1; animation:none; margin-top: 52px; margin-bottom: 28px;"></span>
+    <a href="https://steffenhuck.github.io" class="author-link">steffen huck</a>
+  </footer>
+
+</div>
+
+<script>
+  const titleEl = document.getElementById('title-el');
+  const cursor  = document.getElementById('title-cursor');
+  const text    = 'Mary Wollstonecraft Mill';
+
+  const CHAR_MS   = 140;   // slow, deliberate typing
+  const HOLD_MS   = 2600;  // pause when name is complete
+  const ERASE_MS  = 800;   // fade-out duration
+  const GAP_MS    = 700;   // pause before restarting
+  const BLINK_MS  = 520;
+
+  let blinkTimer = null;
+
+  function blink(on) {
+    clearInterval(blinkTimer);
+    if (on) {
+      let v = true;
+      blinkTimer = setInterval(() => {
+        cursor.style.opacity = (v = !v) ? '1' : '0';
+      }, BLINK_MS);
+    } else {
+      cursor.style.opacity = '1';
+    }
+  }
+
+  function clearText() {
+    Array.from(titleEl.childNodes).forEach(n => {
+      if (n !== cursor) n.parentNode.removeChild(n);
+    });
+  }
+
+  function type(i, done) {
+    if (i >= text.length) { done(); return; }
+    titleEl.insertBefore(document.createTextNode(text[i]), cursor);
+    setTimeout(() => type(i + 1, done), CHAR_MS);
+  }
+
+  function loop() {
+    blink(false);
+    clearText();
+    titleEl.style.opacity = '1';
+
+    setTimeout(() => {
+      type(0, () => {
+        blink(true);
+        setTimeout(() => {
+          blink(false);
+          titleEl.style.transition = `opacity ${ERASE_MS}ms ease`;
+          titleEl.style.opacity = '0';
+          setTimeout(() => {
+            titleEl.style.transition = '';
+            loop();
+          }, ERASE_MS + GAP_MS);
+        }, HOLD_MS);
+      });
+    }, 200);
+  }
+
+  document.fonts.ready.then(() => setTimeout(loop, 500));
+</script>
+
+</body>
+</html>
